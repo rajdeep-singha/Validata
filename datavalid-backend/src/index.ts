@@ -26,6 +26,11 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
+  // Start BullMQ worker in the same process so it shares the filesystem with the API
+  const { startValidationWorker } = await import('./workers/validation.worker');
+  startValidationWorker();
+  logger.info('Validation worker started in-process');
+
   const app = createApp();
 
   const server = app.listen(appConfig.port, () => {
