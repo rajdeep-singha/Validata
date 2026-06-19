@@ -461,8 +461,36 @@ export function LandingPage() {
               Upload your CSV transaction file, let AI map your columns and detect errors — then download a validated, analysis-ready dataset in seconds.
             </p>
 
-            {/* Ask box */}
-            <AskBox onGetStarted={goToApp} />
+            {/* CTA button */}
+            <button
+              onClick={goToApp}
+              style={{
+                padding: '16px 48px',
+                fontSize: 18,
+                fontFamily: "'Fustat', sans-serif",
+                fontWeight: 600,
+                color: '#fff',
+                background: 'rgba(255,255,255,0.12)',
+                border: '1px solid rgba(255,255,255,0.35)',
+                borderRadius: 14,
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                cursor: 'pointer',
+                letterSpacing: '-0.3px',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
+                transition: 'background 0.2s, border-color 0.2s',
+              }}
+              onMouseEnter={e => {
+                (e.target as HTMLButtonElement).style.background = 'rgba(255,255,255,0.22)';
+                (e.target as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.6)';
+              }}
+              onMouseLeave={e => {
+                (e.target as HTMLButtonElement).style.background = 'rgba(255,255,255,0.12)';
+                (e.target as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.35)';
+              }}
+            >
+              Start Validating →
+            </button>
           </div>
         </div>
       </div>
