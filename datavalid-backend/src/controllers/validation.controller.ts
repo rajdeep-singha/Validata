@@ -60,7 +60,10 @@ export async function startValidation(req: Request, res: Response): Promise<void
       status: 'PROCESSING',
     });
   } catch (err) {
-    logger.error('Failed to start validation', { jobId, error: (err as Error).message });
-    res.status(500).json({ error: 'ENQUEUE_FAILED', message: 'Failed to enqueue validation job' });
+    const message = (err as Error).message;
+    const stack = (err as Error).stack;
+    logger.error('Failed to start validation', { jobId, error: message, stack });
+    console.error('VALIDATE 500:', message, stack);
+    res.status(500).json({ error: 'ENQUEUE_FAILED', message });
   }
 }

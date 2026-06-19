@@ -4,8 +4,7 @@ import { ALL_SCHEMA_FIELDS, SchemaField } from '../types/domain';
 import { AIMappingResponse, FixSuggestionsResponse, AISummaryResponse } from '../types/api';
 import { logger } from '../utils/logger';
 
-// ─── Feature 1: Column Mapping ───────────────────────────────────────────────
-
+//  Column Mapping 
 export async function getColumnMappings(
   headers: string[],
   sample: Record<string, string>[]
@@ -69,7 +68,7 @@ Respond ONLY with valid JSON:
   return parsed;
 }
 
-// ─── Feature 2: Auto-Fix Suggestions ─────────────────────────────────────────
+//  Auto-Fix Suggestions 
 
 export async function getFixSuggestions(
   rows: Array<{
@@ -129,7 +128,7 @@ Respond ONLY with valid JSON:
   return parsed;
 }
 
-// ─── Feature 3: Validation Summary ───────────────────────────────────────────
+//  Validation Summary 
 
 export async function generateValidationSummary(stats: {
   jobId: string;
@@ -181,7 +180,7 @@ Respond ONLY with valid JSON:
   return parsed;
 }
 
-// ─── Helper ───────────────────────────────────────────────────────────────────
+//  Helper 
 
 function parseJsonFromLLM<T>(text: string): T {
   // Strip markdown code fences if present

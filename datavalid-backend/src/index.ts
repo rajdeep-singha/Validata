@@ -6,7 +6,7 @@ import { appConfig } from './config/app.config';
 import { runMigrations } from './db/migrate';
 import { logger } from './utils/logger';
 
-// Prevent unhandled Redis connection errors from crashing the process.
+
 // The API still works; only job enqueuing will fail if Redis is unavailable.
 process.on('unhandledRejection', (reason) => {
   const msg = reason instanceof Error ? reason.message : String(reason);

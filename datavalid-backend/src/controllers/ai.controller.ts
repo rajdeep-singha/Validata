@@ -8,7 +8,7 @@ import { getErrorBreakdown } from '../db/repositories/job-row.repository';
 import { columnMappingRequestSchema, fixSuggestionRequestSchema } from '../schemas/api.schema';
 import { logger } from '../utils/logger';
 
-// ─── POST /api/ai/column-mapping ─────────────────────────────────────────────
+//  POST /api/ai/column-mapping 
 
 export async function columnMapping(req: Request, res: Response): Promise<void> {
   const parseResult = columnMappingRequestSchema.safeParse(req.body);
@@ -34,7 +34,7 @@ export async function columnMapping(req: Request, res: Response): Promise<void> 
   }
 }
 
-// ─── POST /api/ai/fix-suggestions ────────────────────────────────────────────
+//  POST /api/ai/fix-suggestions 
 
 export async function fixSuggestions(req: Request, res: Response): Promise<void> {
   const parseResult = fixSuggestionRequestSchema.safeParse(req.body);
@@ -60,7 +60,7 @@ export async function fixSuggestions(req: Request, res: Response): Promise<void>
   }
 }
 
-// ─── GET /api/ai/summary/:jobId ───────────────────────────────────────────────
+//  GET /api/ai/summary/:jobId 
 
 export async function validationSummary(req: Request, res: Response): Promise<void> {
   const { jobId } = req.params;

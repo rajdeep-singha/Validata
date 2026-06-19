@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const FONTS_URL =
   'https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Fustat:wght@400;500;600;700&display=swap';
 
-// ── SVG icons ────────────────────────────────────────────────────────────────
+//  SVG icons 
 const ChevronIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -16,7 +16,7 @@ const StarIcon = () => (
   </svg>
 );
 
-// ── Video Background ──────────────────────────────────────────────────────────
+// Video Background 
 function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number>(0);
@@ -121,7 +121,7 @@ function VideoBackground() {
   );
 }
 
-// ── Nav ───────────────────────────────────────────────────────────────────────
+//  Nav 
 function NavBar({ onGetStarted }: { onGetStarted: () => void }) {
   return (
     <nav style={{
@@ -197,7 +197,7 @@ function NavBar({ onGetStarted }: { onGetStarted: () => void }) {
   );
 }
 
-// ── Landing Page ──────────────────────────────────────────────────────────────
+// Landing Page 
 export function LandingPage() {
   const navigate = useNavigate();
   const goToApp = () => navigate('/app');

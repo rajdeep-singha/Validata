@@ -2,10 +2,7 @@ import { transactionRowSchema } from '../schemas/row.schema';
 import { validatePhone } from '../utils/phone-validator';
 import { ValidationError, ValidatedRow, ErrorCode } from '../types/domain';
 
-/**
- * Validates a single row (already field-renamed to canonical schema names).
- * Returns a ValidatedRow with status and any errors collected.
- */
+
 export function validateRow(
   rawRow: Record<string, string>,
   rowNumber: number,
@@ -13,7 +10,7 @@ export function validateRow(
 ): ValidatedRow {
   const errors: ValidationError[] = [];
 
-  // 1. Zod schema validation (structural + type + payment mode + date)
+  // Zod schema validation (structural + type + payment mode + date)
   const parseResult = transactionRowSchema.safeParse(rawRow);
 
   if (!parseResult.success) {
@@ -24,7 +21,7 @@ export function validateRow(
     }
   }
 
-  // 2. Phone number validation (requires both phone + country code fields to be present)
+  //  Phone number validation (requires both phone + country code fields to be present)
   const phone = rawRow['customer_phone'];
   const countryCode = rawRow['customer_country_code'];
   if (phone && countryCode) {
