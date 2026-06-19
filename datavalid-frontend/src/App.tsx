@@ -5,6 +5,7 @@ import { MappingPage } from './pages/MappingPage';
 import { ValidationResultsPage } from './pages/ValidationResultsPage';
 import { AIInsightsPage } from './pages/AIInsightsPage';
 import { DownloadPage } from './pages/DownloadPage';
+import { LandingPage } from './pages/LandingPage';
 import { useUIStore, type AppStep } from './stores/ui.store';
 import { useEffect } from 'react';
 
@@ -86,7 +87,7 @@ function AppRoutes() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/') setStep('upload');
+    if (location.pathname === '/app') setStep('upload');
     else if (location.pathname.startsWith('/mapping')) setStep('mapping');
     else if (location.pathname.startsWith('/validation')) setStep('validation');
     else if (location.pathname.startsWith('/insights')) setStep('insights');
@@ -95,11 +96,15 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<UploadPage />} />
-      <Route path="/mapping/:jobId" element={<MappingPage />} />
-      <Route path="/validation/:jobId" element={<ValidationResultsPage />} />
-      <Route path="/insights/:jobId" element={<AIInsightsPage />} />
-      <Route path="/download/:jobId" element={<DownloadPage />} />
+      {/* Landing page — no layout wrapper */}
+      <Route path="/" element={<LandingPage />} />
+
+      {/* App pages — wrapped in layout */}
+      <Route path="/app" element={<Layout><UploadPage /></Layout>} />
+      <Route path="/mapping/:jobId" element={<Layout><MappingPage /></Layout>} />
+      <Route path="/validation/:jobId" element={<Layout><ValidationResultsPage /></Layout>} />
+      <Route path="/insights/:jobId" element={<Layout><AIInsightsPage /></Layout>} />
+      <Route path="/download/:jobId" element={<Layout><DownloadPage /></Layout>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
@@ -109,9 +114,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Layout>
-          <AppRoutes />
-        </Layout>
+        <AppRoutes />
       </BrowserRouter>
     </QueryClientProvider>
   );
