@@ -237,7 +237,7 @@ VITE_POLL_INTERVAL_MS=2000
 cd datavalid-backend
 cp .env.example .env      # fill in DATABASE_URL and REDIS_URL
 npm install
-npm run dev               # API on :3000
+npm run dev:all           # API on :3000
 
 # Frontend
 cd datavalid-frontend
